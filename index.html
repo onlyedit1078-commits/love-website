@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>For My Love ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#030303;
+    color:#fff;
+}
+
+.app{
+    width:100%;
+    height:100vh;
+    max-width:550px;
+    margin:auto;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 20% 10%,rgba(255,40,100,.12),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(120,60,255,.12),transparent 30%),
+    #030303;
+}
+
+/* PARTICLES */
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.35;
+    animation:starFloat 5s infinite ease-in-out;
+    pointer-events:none;
+}
+
+@keyframes starFloat{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.2;
+    }
+    50%{
+        transform:translateY(-30px);
+        opacity:.8;
+    }
+}
+
+/* SCREEN */
+
+.screen{
+    position:absolute;
+    inset:0;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    transform:translateX(100%);
+    opacity:0;
+
+    transition:
+        transform .55s cubic-bezier(.4,0,.2,1),
+        opacity .4s ease;
+
+    pointer-events:none;
+}
+
+.screen.active{
+    transform:translateX(0);
+    opacity:1;
+    pointer-events:auto;
+}
+
+.screen.out{
+    transform:translateX(-100%);
+    opacity:0;
+}
+
+/* TEXT */
+
+.mini{
+    color:#999;
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.title{
+    font-size:34px;
+    line-height:1.25;
+}
+
+.subtitle{
+    color:#aaa;
+    font-size:15px;
+    line-height:1.8;
+    max-width:380px;
+    margin-top:15px;
+}
+
+/* BUTTON */
+
+.btn{
+    margin-top:30px;
+    padding:15px 30px;
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,70,120,.25),
+        rgba(130,60,255,.18)
+    );
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.45),
+    inset 0 0 20px rgba(255,255,255,.03);
+
+    backdrop-filter:blur(15px);
+
+    cursor:pointer;
+    font-size:15px;
+
+    transition:.25s;
+}
+
+.btn:active{
+    transform:scale(.94);
+}
+
+/* HEART */
+
+.big-heart{
+    font-size:75px;
+    margin-bottom:20px;
+    animation:heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    15%{transform:scale(1.13)}
+    30%{transform:scale(1)}
+    45%{transform:scale(1.08)}
+}
+
+/* IMAGE QUOTE STYLE */
+
+.quote-number{
+    font-size:13px;
+    letter-spacing:4px;
+    color:#ff5f91;
+    margin-bottom:20px;
+}
+
+.quote{
+    font-size:32px;
+    line-height:1.55;
+    font-weight:500;
+}
+
+.quote-small{
+    color:#aaa;
+    margin-top:20px;
+    font-size:14px;
+}
+
+/* PROGRESS */
+
+.top-progress{
+    position:absolute;
+    top:24px;
+    left:25px;
+    right:25px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    color:#888;
+    font-size:11px;
+    margin-bottom:8px;
+}
+
+.progress{
+    width:100%;
+    height:4px;
+    background:#191919;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff3f78,#a85cff);
+    transition:.4s;
+}
+
+/* QUIZ */
+
+.q-number{
+    color:#ff5f91;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:18px;
+}
+
+.question{
+    font-size:25px;
+    line-height:1.45;
+    max-width:440px;
+    margin-bottom:25px;
+}
+
+.options{
+    width:100%;
+    max-width:430px;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.option{
+    width:100%;
+    padding:15px;
+
+    color:#fff;
+    text-align:left;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:17px;
+
+    background:rgba(255,255,255,.045);
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.option:active{
+    transform:scale(.98);
+}
+
+.option.selected{
+    border-color:#ff4e82;
+}
+
+.option.correct{
+    border-color:#36e6a0;
+    background:rgba(40,230,160,.13);
+}
+
+.option.wrong{
+    border-color:#ff465f;
+    background:rgba(255,50,70,.13);
+}
+
+/* ANSWER MESSAGE */
+
+.answer-message{
+    height:28px;
+    margin-top:12px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.answer-message.correct{
+    color:#43e5a3;
+}
+
+.answer-message.wrong{
+    color:#ff5068;
+}
+
+/* DISABLED */
+
+.option.disabled{
+    pointer-events:none;
+}
+
+/* RESULT */
+
+.result-score{
+    font-size:70px;
+    font-weight:bold;
+
+    background:
+    linear-gradient(90deg,#ff477f,#bd61ff);
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.result-title{
+    font-size:27px;
+    margin-top:10px;
+}
+
+.result-text{
+    color:#aaa;
+    max-width:390px;
+    line-height:1.8;
+    font-size:14px;
+    margin-top:15px;
+}
+
+.score-card{
+    margin-top:25px;
+    padding:18px 25px;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+
+    background:rgba(255,255,255,.045);
+}
+
+.score-label{
+    font-size:10px;
+    color:#888;
+    letter-spacing:3px;
+}
+
+.love-score{
+    font-size:30px;
+    margin-top:8px;
+}
+
+/* MEMORY */
+
+.memory-card{
+    width:100%;
+    max-width:390px;
+
+    padding:30px 22px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.025)
+    );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.memory-icon{
+    font-size:65px;
+    margin-bottom:15px;
+}
+
+.memory-title{
+    font-size:24px;
+}
+
+.memory-text{
+    color:#aaa;
+    margin-top:12px;
+    line-height:1.8;
+    font-size:14px;
+}
+
+/* CHOOSE GAME */
+
+.choice-title{
+    font-size:25px;
+    margin-bottom:25px;
+}
+
+.choice-grid{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    max-width:420px;
+}
+
+.choice{
+    padding:22px 10px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.045);
+
+    color:#fff;
+
+    font-size:14px;
+
+    cursor:pointer;
+}
+
+.choice:active{
+    transform:scale(.96);
+}
+
+/* ENVELOPES */
+
+.envelopes{
+    width:100%;
+    max-width:420px;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.envelope{
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.envelope:active{
+    transform:scale(.97);
+}
+
+.envelope-title{
+    font-size:15px;
+}
+
+.envelope-text{
+    display:none;
+    color:#aaa;
+    margin-top:10px;
+    line-height:1.7;
+    font-size:13px;
+}
+
+.envelope.open .envelope-text{
+    display:block;
+}
+
+/* GIFT */
+
+.gift{
+    font-size:85px;
+    animation:giftMove 1.5s infinite ease-in-out;
+}
+
+@keyframes giftMove{
+    0%,100%{
+        transform:rotate(0) scale(1);
+    }
+    50%{
+        transform:rotate(5deg) scale(1.08);
+    }
+}
+
+/* FINAL */
+
+.final-heart{
+    font-size:85px;
+    animation:heartbeat 1.4s infinite;
+}
+
+.final-message{
+    color:#ccc;
+    max-width:390px;
+    font-size:15px;
+    line-height:2;
+    margin-top:20px;
+}
+
+.signature{
+    color:#777;
+    margin-top:18px;
+    font-size:12px;
+}
+
+/* MUSIC */
+
+.music{
+    position:absolute;
+    right:18px;
+    top:18px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:white;
+
+    cursor:pointer;
+
+    z-index:50;
+}
+
+/* MOBILE */
+
+@media(max-height:680px){
+
+    .screen{
+        padding:20px;
+    }
+
+    .title{
+        font-size:29px;
+    }
+
+    .quote{
+        font-size:26px;
+    }
+
+    .question{
+        font-size:21px;
+        margin-bottom:17px;
+    }
+
+    .option{
+        padding:11px;
+    }
+
+    .btn{
+        margin-top:18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<button class="music" onclick="toggleSound()">♪</button>
+
+<div class="star" style="left:12%;top:18%"></div>
+<div class="star" style="left:75%;top:12%;animation-delay:1s"></div>
+<div class="star" style="left:30%;top:75%;animation-delay:2s"></div>
+<div class="star" style="left:88%;top:65%;animation-delay:3s"></div>
+<div class="star" style="left:50%;top:35%;animation-delay:1.5s"></div>
+
+
+<!-- =================================================
+START
+================================================= -->
+
+<section class="screen active" id="start">
+
+<div class="mini">A little surprise</div>
+
+<div class="big-heart">❤️</div>
+
+<h1 class="title">
+Ek chhoti si<br>
+journey tumhare liye...
+</h1>
+
+<p class="subtitle">
+Pehle kuch baatein hongi,<br>
+phir ek chhota sa test...<br>
+aur end mein ek surprise. 🫶
+</p>
+
+<button class="btn" onclick="go('start','intro')">
+Start ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+INTRO
+================================================= -->
+
+<section class="screen" id="intro">
+
+<div class="mini">Before We Begin</div>
+
+<h1 class="title">
+Ek rule hai... 😏
+</h1>
+
+<p class="subtitle">
+Jo answer tumhe genuinely sahi lage,<br>
+wahi choose karna.<br><br>
+
+Dekhte hain tum mujhe<br>
+kitna jaanti ho...
+</p>
+
+<button class="btn" onclick="go('intro','quotes')">
+I Accept ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+18 QUOTES
+================================================= -->
+
+<section class="screen" id="quotes">
+
+<div class="quote-number" id="quoteNumber">
+एक — भगवान
+</div>
+
+<div class="quote" id="quoteText">
+एक — भगवान
+</div>
+
+<div class="quote-small" id="quoteHint">
+Ek se shuru...
+</div>
+
+<button class="btn" onclick="nextQuote()">
+Next →
+</button>
+
+</section>
+
+
+<!-- =================================================
+QUOTE END
+================================================= -->
+
+<section class="screen" id="quoteEnd">
+
+<div class="big-heart">🫶</div>
+
+<h1 class="title">
+18 बातें पूरी...
+</h1>
+
+<p class="subtitle">
+Lekin asli test<br>
+ab shuru hota hai. 😏
+</p>
+
+<button class="btn" onclick="startQuiz()">
+Test Me ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+QUIZ
+================================================= -->
+
+<section class="screen" id="quiz">
+
+<div class="top-progress">
+
+<div class="progress-info">
+<span id="counter">01 / 15</span>
+<span id="percent">7%</span>
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="bar"></div>
+</div>
+
+</div>
+
+<div class="q-number" id="qNumber">
+QUESTION 01
+</div>
+
+<div class="question" id="question">
+Question
+</div>
+
+<div class="options" id="options"></div>
+
+<div class="answer-message" id="answerMessage"></div>
+
+<button class="btn" id="nextQuestion" onclick="nextQuestion()" style="opacity:.35;pointer-events:none;">
+Next →
+</button>
+
+</section>
+
+
+<!-- =================================================
+QUIZ RESULT
+================================================= -->
+
+<section class="screen" id="result">
+
+<div class="mini">Your Result</div>
+
+<div class="result-score" id="resultScore">
+0/15
+</div>
+
+<h2 class="result-title" id="resultTitle">
+Result
+</h2>
+
+<p class="result-text" id="resultText">
+...
+</p>
+
+<div class="score-card">
+
+<div class="score-label">
+HOW MUCH YOU KNOW ME
+</div>
+
+<div class="love-score" id="knowScore">
+0%
+</div>
+
+</div>
+
+<button class="btn" onclick="go('result','memoryIntro')">
+Aage Chalo ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+MEMORY INTRO
+================================================= -->
+
+<section class="screen" id="memoryIntro">
+
+<div class="mini">Our Memories</div>
+
+<div class="memory-card">
+
+<div class="memory-icon">
+💍
+</div>
+
+<h2 class="memory-title">
+Ek memory...
+</h2>
+
+<p class="memory-text">
+Jab hum shaadi mein mile the,
+shayad us waqt kisi ko nahi pata tha
+ki ye mulaqat itni special ho jayegi. ❤️
+</p>
+
+</div>
+
+<button class="btn" onclick="go('memoryIntro','memory2')">
+Next Memory →
+</button>
+
+</section>
+
+
+<!-- =================================================
+MEMORY 2
+================================================= -->
+
+<section class="screen" id="memory2">
+
+<div class="memory-card">
+
+<div class="memory-icon">
+🏔️
+</div>
+
+<h2 class="memory-title">
+Agar hum kahin jaaye...
+</h2>
+
+<p class="memory-text">
+Toh mujhe kisi pahadi jagah par
+tumhare saath time spend karna
+sabse accha lagega. 🏔️❤️
+</p>
+
+</div>
+
+<button class="btn" onclick="go('memory2','game')">
+Ek Game Khele? 🎮
+</button>
+
+</section>
+
+
+<!-- =================================================
+CHOICE GAME
+================================================= -->
+
+<section class="screen" id="game">
+
+<div class="mini">Mini Game</div>
+
+<h1 class="choice-title">
+Agar hum dono ko<br>
+ek perfect date mile... ❤️
+</h1>
+
+<div class="choice-grid">
+
+<button class="choice" onclick="dateChoice('Mountain')">
+🏔️ Mountain
+</button>
+
+<button class="choice" onclick="dateChoice('Night Walk')">
+🌙 Night Walk
+</button>
+
+<button class="choice" onclick="dateChoice('Food Date')">
+🍚 Food Date
+</button>
+
+<button class="choice" onclick="dateChoice('Movie')">
+🎬 Movie
+</button>
+
+</div>
+
+<p class="subtitle" id="gameResult"></p>
+
+<button class="btn" id="gameNext" onclick="go('game','envelopes')" style="display:none;">
+Next ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+OPEN WHEN
+================================================= -->
+
+<section class="screen" id="envelopes">
+
+<div class="mini">Open When...</div>
+
+<h1 class="title" style="font-size:28px;">
+Koi ek khol ke dekho 💌
+</h1>
+
+<div class="envelopes">
+
+<div class="envelope" onclick="openEnvelope(this)">
+<div class="envelope-title">
+💌 Jab meri yaad aaye
+</div>
+
+<div class="envelope-text">
+Toh bas itna yaad rakhna...
+door rehne ka matlab ye nahi
+ki main tumhare baare mein nahi sochta. ❤️
+</div>
+</div>
+
+
+<div class="envelope" onclick="openEnvelope(this)">
+<div class="envelope-title">
+🥺 Jab mujhse gussa ho
+</div>
+
+<div class="envelope-text">
+Pehle thoda gussa kar lena...
+phir baat kar lena.
+Main tumhe ignore karne walon mein se nahi hoon. ❤️
+</div>
+</div>
+
+
+<div class="envelope" onclick="openEnvelope(this)">
+<div class="envelope-title">
+🌧️ Jab udaas ho
+</div>
+
+<div class="envelope-text">
+Tumhe har waqt strong banne ki zarurat nahi.
+Kabhi-kabhi bas kisi ke paas rehna bhi enough hota hai. 🫶
+</div>
+</div>
+
+</div>
+
+<button class="btn" onclick="go('envelopes','fake')">
+Last One...
+</button>
+
+</section>
+
+
+<!-- =================================================
+FAKE ENDING
+================================================= -->
+
+<section class="screen" id="fake">
+
+<div class="big-heart">
+❤️
+</div>
+
+<h1 class="title">
+Bas... itna hi tha.
+</h1>
+
+<p class="subtitle">
+Quiz bhi ho gaya,<br>
+memories bhi dekh li...
+</p>
+
+<button class="btn" onclick="fakeReveal()">
+Close ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+FAKE REVEAL
+================================================= -->
+
+<section class="screen" id="reveal">
+
+<div class="mini">
+Wait...
+</div>
+
+<h1 class="title">
+Ek baat aur hai. 😏
+</h1>
+
+<p class="subtitle">
+Tumhe laga main itni jaldi<br>
+website khatam kar dunga?
+</p>
+
+<button class="btn" onclick="go('reveal','final')">
+Open My Heart ❤️
+</button>
+
+</section>
+
+
+<!-- =================================================
+FINAL
+================================================= -->
+
+<section class="screen" id="final">
+
+<div class="mini">
+One Last Thing
+</div>
+
+<div class="final-heart">
+❤️
+</div>
+
+<h1 class="title">
+Tum mujhe kitna jaanti ho,
+<br>
+iska ek score ho sakta hai...
+</h1>
+
+<p class="final-message">
+
+Lekin main tumhe<br>
+kitna chahta hoon,
+<br>
+iska koi score nahi ho sakta. ❤️
+
+<br><br>
+
+Tum meri life ki
+un chhoti-chhoti khushiyon mein se ho
+jinka mujhe kabhi-kabhi
+khud bhi ehsaas nahi hota.
+
+<br><br>
+
+<b>
+Aaj bhi tum. ❤️
+<br>
+Kal bhi tum. ❤️
+<br>
+Aur meri har achhi dua mein bhi tum. ❤️
+</b>
+
+</p>
+
+<div class="signature">
+— Tumhara ❤️
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+18 IMAGE LINES
+===================================================== */
+
+const quotes = [
+
+"एक — भगवान",
+"दो — पक्ष",
+"तीन — लोक",
+"चार — युग",
+"पांच — तत्व",
+"छः — शास्त्र",
+"सात — दिन",
+"आठ — खंड",
+"नौ — ग्रह",
+"दस — दिशा",
+"ग्यारह — रुद्र",
+"बारह — महीने",
+"तेरह — रत्न",
+"चौदह — विद्या",
+"पंद्रह — तिथि",
+"सोलह — श्रृंगार",
+"सत्रह — वनस्पति",
+"अठारह — पुराण"
+
+];
+
+let quoteIndex = 0;
+
+function nextQuote(){
+
+    quoteIndex++;
+
+    if(quoteIndex >= quotes.length){
+
+        go("quotes","quoteEnd");
+
+        return;
+
+    }
+
+    document.getElementById("quoteNumber").innerText =
+        quotes[quoteIndex];
+
+    document.getElementById("quoteText").innerText =
+        quotes[quoteIndex];
+
+}
+
+
+/* =====================================================
+SCREEN CHANGE
+===================================================== */
+
+function go(from,to){
+
+    const fromScreen =
+        document.getElementById(from);
+
+    const toScreen =
+        document.getElementById(to);
+
+    fromScreen.classList.remove("active");
+    fromScreen.classList.add("out");
+
+    setTimeout(()=>{
+
+        fromScreen.classList.remove("out");
+        toScreen.classList.add("active");
+
+    },120);
+
+}
+
+
+/* =====================================================
+QUESTIONS
+===================================================== */
+
+const questions = [
+
+{
+q:"Aditya ka favourite colour kya hai?",
+a:["Black 🖤","Blue 💙","White 🤍","Green 💚"],
+correct:"Black 🖤"
+},
+
+{
+q:"Aditya ko inmein se kya khana sabse zyada pasand hai?",
+a:["Biryani 🍚","Chola 🥘","Pizza 🍕","Burger 🍔"],
+correct:"Chola 🥘"
+},
+
+{
+q:"Aditya ko drink mein kya pasand hai?",
+a:["Cold Coffee ☕","Juice 🧃","Water 💧","Cold Drink 🥤"],
+correct:"Water 💧"
+},
+
+{
+q:"Aditya ka favourite kya hai?",
+a:["Apple 🍎","Chukandar ❤️","Mango 🥭","Banana 🍌"],
+correct:"Chukandar ❤️"
+},
+
+{
+q:"Aditya ko sweets ke baare mein kya pasand hai?",
+a:[
+"Mujhe bahut meetha pasand hai 🍰",
+"Sirf chocolate 🍫",
+"Mitha mujhe pasand nahi 😶",
+"Ice cream 🍦"
+],
+correct:"Mitha mujhe pasand nahi 😶"
+},
+
+{
+q:"Aditya ko ghoomne ke liye kya sabse zyada pasand hai?",
+a:[
+"Beach 🌊",
+"Pahad 🏔️",
+"City 🌃",
+"Desert 🏜️"
+],
+correct:"Pahad 🏔️"
+},
+
+{
+q:"Aditya ka favourite season?",
+a:[
+"Summer ☀️",
+"Rain 🌧️",
+"Winter ❄️",
+"Spring 🌸"
+],
+correct:"Winter ❄️"
+},
+
+{
+q:"Free time mein Aditya ko kya pasand hai?",
+a:[
+"Sona 😴",
+"New skill seekhna 🧠",
+"Shopping 🛍️",
+"Party 🥳"
+],
+correct:"New skill seekhna 🧠"
+},
+
+{
+q:"Aditya ka favourite animal?",
+a:[
+"Dog 🐶",
+"Cat 🐱",
+"Horse 🐴",
+"Koi favourite nahi 😄"
+],
+correct:"Koi favourite nahi 😄"
+},
+
+{
+q:"Aditya ko kaunsi series pasand hai?",
+a:[
+"Money Heist 💰",
+"Stranger Things 👾",
+"Game of Thrones ⚔️",
+"Breaking Bad 🧪"
+],
+correct:"Game of Thrones ⚔️"
+},
+
+{
+q:"Aditya ka favourite singer?",
+a:[
+"Arijit Singh 🎤",
+"Jagjit Singh 🎶",
+"Sonu Nigam 🎵",
+"KK 🎧"
+],
+correct:"Jagjit Singh 🎶"
+},
+
+{
+q:"Aditya ka favourite song?",
+a:[
+"Kesariya",
+"Tum Hi Ho",
+"Are Re Meri Jaan Hai Radha",
+"Chaleya"
+],
+correct:"Are Re Meri Jaan Hai Radha"
+},
+
+{
+q:"Aditya ko logon mein kya pasand hai?",
+a:[
+"Famous hona",
+"Honest aur loyal hona ❤️",
+"Bahut paisa hona",
+"Funny hona"
+],
+correct:"Honest aur loyal hona ❤️"
+},
+
+{
+q:"Aditya ko kis baat par sabse zyada irritation hoti hai?",
+a:[
+"Koi uski baat na maane aur ilzaam lagaye",
+"Koi gift na de",
+"Koi movie na dekhe",
+"Koi call na kare"
+],
+correct:"Koi uski baat na maane aur ilzaam lagaye"
+},
+
+{
+q:"Relationship mein Aditya ko sabse zyada kya chahiye?",
+a:[
+"Expensive gifts 🎁",
+"Attention aur care ❤️",
+"Sirf long drives 🚗",
+"Social media posts 📱"
+],
+correct:"Attention aur care ❤️"
+}
+
+];
+
+let currentQuestion=0;
+let score=0;
+let answered=false;
+
+
+/* =====================================================
+START QUIZ
+===================================================== */
+
+function startQuiz(){
+
+    currentQuestion=0;
+    score=0;
+
+    go("quoteEnd","quiz");
+
+    setTimeout(()=>{
+        loadQuestion();
+    },300);
+
+}
+
+
+/* =====
