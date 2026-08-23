@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>For My Love ❤️</title>
+<title>For Ritika ❤️</title>
 
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
@@ -22,49 +21,50 @@ html,body{
 }
 
 body{
-    font-family:Arial, sans-serif;
     background:#030303;
-    color:#fff;
+    color:white;
+    font-family:Arial,sans-serif;
 }
 
 .app{
     width:100%;
-    height:100vh;
     max-width:550px;
+    height:100vh;
     margin:auto;
     position:relative;
     overflow:hidden;
+
     background:
-    radial-gradient(circle at 20% 10%,rgba(255,40,100,.12),transparent 30%),
-    radial-gradient(circle at 90% 90%,rgba(120,60,255,.12),transparent 30%),
+    radial-gradient(circle at 15% 10%,rgba(255,30,90,.15),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(100,50,255,.13),transparent 32%),
     #030303;
 }
 
-/* PARTICLES */
+/* Floating stars */
 
 .star{
     position:absolute;
     width:3px;
     height:3px;
-    background:#fff;
+    background:white;
     border-radius:50%;
-    opacity:.35;
-    animation:starFloat 5s infinite ease-in-out;
+    opacity:.4;
+    animation:floatStar 5s infinite ease-in-out;
     pointer-events:none;
 }
 
-@keyframes starFloat{
+@keyframes floatStar{
     0%,100%{
         transform:translateY(0);
         opacity:.2;
     }
     50%{
-        transform:translateY(-30px);
+        transform:translateY(-25px);
         opacity:.8;
     }
 }
 
-/* SCREEN */
+/* Screens */
 
 .screen{
     position:absolute;
@@ -76,123 +76,109 @@ body{
     align-items:center;
     text-align:center;
 
-    transform:translateX(100%);
     opacity:0;
-
-    transition:
-        transform .55s cubic-bezier(.4,0,.2,1),
-        opacity .4s ease;
-
+    transform:translateX(100%);
     pointer-events:none;
+
+    transition:transform .45s ease,opacity .35s ease;
 }
 
 .screen.active{
-    transform:translateX(0);
     opacity:1;
+    transform:translateX(0);
     pointer-events:auto;
 }
 
-.screen.out{
-    transform:translateX(-100%);
-    opacity:0;
-}
-
-/* TEXT */
+/* Opening */
 
 .mini{
     color:#999;
     font-size:11px;
     letter-spacing:4px;
     text-transform:uppercase;
-    margin-bottom:18px;
+    margin-bottom:20px;
+}
+
+.big-heart{
+    font-size:76px;
+    margin-bottom:20px;
+    animation:heartbeat 1.6s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    15%{transform:scale(1.12)}
+    30%{transform:scale(1)}
+    45%{transform:scale(1.08)}
 }
 
 .title{
     font-size:34px;
-    line-height:1.25;
+    line-height:1.3;
 }
 
 .subtitle{
     color:#aaa;
     font-size:15px;
     line-height:1.8;
-    max-width:380px;
-    margin-top:15px;
+    max-width:390px;
+    margin-top:16px;
 }
 
-/* BUTTON */
+/* Buttons */
 
 .btn{
     margin-top:30px;
     padding:15px 30px;
-
-    border:1px solid rgba(255,255,255,.15);
     border-radius:50px;
 
-    color:#fff;
+    border:1px solid rgba(255,255,255,.18);
 
     background:
     linear-gradient(
         135deg,
-        rgba(255,70,120,.25),
-        rgba(130,60,255,.18)
+        rgba(255,50,110,.25),
+        rgba(120,60,255,.20)
     );
 
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.45),
-    inset 0 0 20px rgba(255,255,255,.03);
-
-    backdrop-filter:blur(15px);
-
-    cursor:pointer;
+    color:white;
     font-size:15px;
 
-    transition:.25s;
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.45);
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
 }
 
 .btn:active{
     transform:scale(.94);
 }
 
-/* HEART */
-
-.big-heart{
-    font-size:75px;
-    margin-bottom:20px;
-    animation:heartbeat 1.7s infinite;
-}
-
-@keyframes heartbeat{
-    0%,100%{transform:scale(1)}
-    15%{transform:scale(1.13)}
-    30%{transform:scale(1)}
-    45%{transform:scale(1.08)}
-}
-
-/* IMAGE QUOTE STYLE */
+/* 18 lines */
 
 .quote-number{
-    font-size:13px;
+    color:#ff5c91;
+    font-size:12px;
     letter-spacing:4px;
-    color:#ff5f91;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .quote{
     font-size:32px;
-    line-height:1.55;
-    font-weight:500;
+    line-height:1.6;
 }
 
 .quote-small{
-    color:#aaa;
-    margin-top:20px;
-    font-size:14px;
+    color:#888;
+    font-size:13px;
+    margin-top:18px;
 }
 
-/* PROGRESS */
+/* Quiz progress */
 
-.top-progress{
+.quiz-top{
     position:absolute;
     top:24px;
     left:25px;
@@ -216,25 +202,23 @@ body{
 }
 
 .progress-bar{
-    width:0%;
     height:100%;
-    background:linear-gradient(90deg,#ff3f78,#a85cff);
+    width:0;
+    background:linear-gradient(90deg,#ff3f78,#a75cff);
     transition:.4s;
 }
 
-/* QUIZ */
-
-.q-number{
-    color:#ff5f91;
+.question-number{
+    color:#ff5c91;
     font-size:11px;
     letter-spacing:4px;
     margin-bottom:18px;
 }
 
 .question{
-    font-size:25px;
+    font-size:24px;
     line-height:1.45;
-    max-width:440px;
+    max-width:430px;
     margin-bottom:25px;
 }
 
@@ -250,125 +234,111 @@ body{
     width:100%;
     padding:15px;
 
-    color:#fff;
-    text-align:left;
-
-    border:1px solid rgba(255,255,255,.12);
     border-radius:17px;
+    border:1px solid rgba(255,255,255,.12);
 
     background:rgba(255,255,255,.045);
 
+    color:white;
+    text-align:left;
     font-size:14px;
 
     cursor:pointer;
-
-    transition:.25s;
 }
 
 .option:active{
     transform:scale(.98);
 }
 
-.option.selected{
-    border-color:#ff4e82;
-}
-
 .option.correct{
-    border-color:#36e6a0;
-    background:rgba(40,230,160,.13);
+    border-color:#35e5a0;
+    background:rgba(35,220,150,.15);
 }
 
 .option.wrong{
-    border-color:#ff465f;
-    background:rgba(255,50,70,.13);
+    border-color:#ff4961;
+    background:rgba(255,50,70,.15);
 }
-
-/* ANSWER MESSAGE */
-
-.answer-message{
-    height:28px;
-    margin-top:12px;
-    font-size:14px;
-    font-weight:bold;
-}
-
-.answer-message.correct{
-    color:#43e5a3;
-}
-
-.answer-message.wrong{
-    color:#ff5068;
-}
-
-/* DISABLED */
 
 .option.disabled{
     pointer-events:none;
 }
 
-/* RESULT */
+.answer{
+    height:25px;
+    margin-top:12px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.answer.correct{
+    color:#3ee5a1;
+}
+
+.answer.wrong{
+    color:#ff5067;
+}
+
+/* Result */
 
 .result-score{
-    font-size:70px;
+    font-size:68px;
     font-weight:bold;
 
-    background:
-    linear-gradient(90deg,#ff477f,#bd61ff);
+    background:linear-gradient(90deg,#ff477f,#bf5dff);
 
     -webkit-background-clip:text;
+    background-clip:text;
+
     color:transparent;
 }
 
 .result-title{
-    font-size:27px;
+    font-size:26px;
     margin-top:10px;
 }
 
 .result-text{
     color:#aaa;
     max-width:390px;
-    line-height:1.8;
     font-size:14px;
+    line-height:1.8;
     margin-top:15px;
 }
 
 .score-card{
-    margin-top:25px;
-    padding:18px 25px;
+    margin-top:24px;
+    padding:18px 30px;
 
-    border:1px solid rgba(255,255,255,.12);
     border-radius:22px;
 
-    background:rgba(255,255,255,.045);
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.12);
 }
 
 .score-label{
-    font-size:10px;
     color:#888;
+    font-size:10px;
     letter-spacing:3px;
 }
 
-.love-score{
+.know-score{
     font-size:30px;
     margin-top:8px;
 }
 
-/* MEMORY */
+/* Memory */
 
 .memory-card{
     width:100%;
-    max-width:390px;
+    max-width:400px;
 
     padding:30px 22px;
 
     border-radius:28px;
 
-    background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.025)
-    );
+    background:rgba(255,255,255,.05);
 
     border:1px solid rgba(255,255,255,.12);
 
@@ -386,47 +356,49 @@ body{
 
 .memory-text{
     color:#aaa;
-    margin-top:12px;
     line-height:1.8;
     font-size:14px;
+    margin-top:12px;
 }
 
-/* CHOOSE GAME */
+/* Game */
 
-.choice-title{
-    font-size:25px;
-    margin-bottom:25px;
-}
-
-.choice-grid{
+.game-grid{
     width:100%;
+    max-width:420px;
+
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:12px;
-    max-width:420px;
 }
 
-.choice{
+.game-option{
     padding:22px 10px;
 
     border-radius:20px;
 
     border:1px solid rgba(255,255,255,.12);
 
-    background:rgba(255,255,255,.045);
+    background:rgba(255,255,255,.05);
 
-    color:#fff;
-
-    font-size:14px;
+    color:white;
 
     cursor:pointer;
+    font-size:14px;
 }
 
-.choice:active{
+.game-option:active{
     transform:scale(.96);
 }
 
-/* ENVELOPES */
+.game-result{
+    color:#ccc;
+    line-height:1.7;
+    margin-top:18px;
+    max-width:380px;
+}
+
+/* Envelopes */
 
 .envelopes{
     width:100%;
@@ -442,63 +414,51 @@ body{
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.05);
-
     border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.05);
 
     text-align:left;
 
     cursor:pointer;
-
-    transition:.25s;
-}
-
-.envelope:active{
-    transform:scale(.97);
-}
-
-.envelope-title{
-    font-size:15px;
 }
 
 .envelope-text{
     display:none;
+
     color:#aaa;
-    margin-top:10px;
-    line-height:1.7;
     font-size:13px;
+    line-height:1.7;
+
+    margin-top:10px;
 }
 
 .envelope.open .envelope-text{
     display:block;
 }
 
-/* GIFT */
+/* Gift */
 
 .gift{
     font-size:85px;
-    animation:giftMove 1.5s infinite ease-in-out;
+    animation:gift 1.4s infinite ease-in-out;
 }
 
-@keyframes giftMove{
-    0%,100%{
-        transform:rotate(0) scale(1);
-    }
-    50%{
-        transform:rotate(5deg) scale(1.08);
-    }
+@keyframes gift{
+    0%,100%{transform:scale(1) rotate(0)}
+    50%{transform:scale(1.08) rotate(4deg)}
 }
 
-/* FINAL */
+/* Final */
 
 .final-heart{
     font-size:85px;
     animation:heartbeat 1.4s infinite;
 }
 
-.final-message{
-    color:#ccc;
+.final-text{
     max-width:390px;
+    color:#ccc;
     font-size:15px;
     line-height:2;
     margin-top:20px;
@@ -510,30 +470,26 @@ body{
     font-size:12px;
 }
 
-/* MUSIC */
+/* Music */
 
 .music{
     position:absolute;
-    right:18px;
+    z-index:100;
+
     top:18px;
+    right:18px;
 
     width:42px;
     height:42px;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.15);
 
-    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
 
     color:white;
-
-    cursor:pointer;
-
-    z-index:50;
 }
-
-/* MOBILE */
 
 @media(max-height:680px){
 
@@ -542,7 +498,11 @@ body{
     }
 
     .title{
-        font-size:29px;
+        font-size:28px;
+    }
+
+    .big-heart{
+        font-size:60px;
     }
 
     .quote{
@@ -550,8 +510,8 @@ body{
     }
 
     .question{
-        font-size:21px;
-        margin-bottom:17px;
+        font-size:20px;
+        margin-bottom:16px;
     }
 
     .option{
@@ -561,7 +521,6 @@ body{
     .btn{
         margin-top:18px;
     }
-
 }
 
 </style>
@@ -571,78 +530,73 @@ body{
 
 <div class="app">
 
-<button class="music" onclick="toggleSound()">♪</button>
-
-<div class="star" style="left:12%;top:18%"></div>
-<div class="star" style="left:75%;top:12%;animation-delay:1s"></div>
+<!-- Stars -->
+<div class="star" style="left:10%;top:20%"></div>
+<div class="star" style="left:75%;top:14%;animation-delay:1s"></div>
 <div class="star" style="left:30%;top:75%;animation-delay:2s"></div>
 <div class="star" style="left:88%;top:65%;animation-delay:3s"></div>
 <div class="star" style="left:50%;top:35%;animation-delay:1.5s"></div>
 
+<button class="music" onclick="musicButton()">♪</button>
 
-<!-- =================================================
-START
-================================================= -->
+
+<!-- ================= START ================= -->
 
 <section class="screen active" id="start">
 
-<div class="mini">A little surprise</div>
+<div class="mini">A Little Surprise</div>
 
 <div class="big-heart">❤️</div>
 
 <h1 class="title">
-Ek chhoti si<br>
+Ritika, ek chhoti si<br>
 journey tumhare liye...
 </h1>
 
 <p class="subtitle">
 Pehle kuch baatein hongi,<br>
-phir ek chhota sa test...<br>
+phir ek chhota sa test,<br>
 aur end mein ek surprise. 🫶
 </p>
 
-<button class="btn" onclick="go('start','intro')">
+<button class="btn" onclick="showScreen('start','intro')">
 Start ❤️
 </button>
 
 </section>
 
 
-<!-- =================================================
-INTRO
-================================================= -->
+<!-- ================= INTRO ================= -->
 
 <section class="screen" id="intro">
 
 <div class="mini">Before We Begin</div>
 
 <h1 class="title">
-Ek rule hai... 😏
+Ek chhota sa rule hai... 😏
 </h1>
 
 <p class="subtitle">
 Jo answer tumhe genuinely sahi lage,<br>
 wahi choose karna.<br><br>
 
-Dekhte hain tum mujhe<br>
-kitna jaanti ho...
+Dekhte hain Ritika,<br>
+tum mujhe kitna jaanti ho...
 </p>
 
-<button class="btn" onclick="go('intro','quotes')">
+<button class="btn" onclick="showScreen('intro','quotes')">
 I Accept ❤️
 </button>
 
 </section>
 
 
-<!-- =================================================
-18 QUOTES
-================================================= -->
+<!-- ================= 18 LINES ================= -->
 
 <section class="screen" id="quotes">
 
 <div class="quote-number" id="quoteNumber">
-एक — भगवान
+01 / 18
 </div>
 
 <div class="quote" id="quoteText">
@@ -650,7 +604,7 @@ I Accept ❤️
 </div>
 
 <div class="quote-small" id="quoteHint">
-Ek se shuru...
+Ek se shuru... ❤️
 </div>
 
 <button class="btn" onclick="nextQuote()">
@@ -660,9 +614,7 @@ Next →
 </section>
 
 
-<!-- =================================================
-QUOTE END
-================================================= -->
+<!-- ================= QUOTE END ================= -->
 
 <section class="screen" id="quoteEnd">
 
@@ -673,8 +625,8 @@ QUOTE END
 </h1>
 
 <p class="subtitle">
-Lekin asli test<br>
-ab shuru hota hai. 😏
+Lekin Ritika,<br>
+asli test ab shuru hota hai. 😏
 </p>
 
 <button class="btn" onclick="startQuiz()">
@@ -684,13 +636,11 @@ Test Me ❤️
 </section>
 
 
-<!-- =================================================
-QUIZ
-================================================= -->
+<!-- ================= QUIZ ================= -->
 
 <section class="screen" id="quiz">
 
-<div class="top-progress">
+<div class="quiz-top">
 
 <div class="progress-info">
 <span id="counter">01 / 15</span>
@@ -698,37 +648,39 @@ QUIZ
 </div>
 
 <div class="progress">
-<div class="progress-bar" id="bar"></div>
+<div class="progress-bar" id="progressBar"></div>
 </div>
 
 </div>
 
-<div class="q-number" id="qNumber">
+<div class="question-number" id="questionNumber">
 QUESTION 01
 </div>
 
-<div class="question" id="question">
+<div class="question" id="questionText">
 Question
 </div>
 
 <div class="options" id="options"></div>
 
-<div class="answer-message" id="answerMessage"></div>
+<div class="answer" id="answerMessage"></div>
 
-<button class="btn" id="nextQuestion" onclick="nextQuestion()" style="opacity:.35;pointer-events:none;">
+<button
+class="btn"
+id="nextButton"
+onclick="nextQuestion()"
+style="opacity:.35;pointer-events:none;">
 Next →
 </button>
 
 </section>
 
 
-<!-- =================================================
-QUIZ RESULT
-================================================= -->
+<!-- ================= RESULT ================= -->
 
 <section class="screen" id="result">
 
-<div class="mini">Your Result</div>
+<div class="mini">Ritika's Result</div>
 
 <div class="result-score" id="resultScore">
 0/15
@@ -739,7 +691,7 @@ Result
 </h2>
 
 <p class="result-text" id="resultText">
-...
+Result...
 </p>
 
 <div class="score-card">
@@ -748,26 +700,24 @@ Result
 HOW MUCH YOU KNOW ME
 </div>
 
-<div class="love-score" id="knowScore">
+<div class="know-score" id="knowScore">
 0%
 </div>
 
 </div>
 
-<button class="btn" onclick="go('result','memoryIntro')">
+<button class="btn" onclick="showScreen('result','memory1')">
 Aage Chalo ❤️
 </button>
 
 </section>
 
 
-<!-- =================================================
-MEMORY INTRO
-================================================= -->
+<!-- ================= MEMORY 1 ================= -->
 
-<section class="screen" id="memoryIntro">
+<section class="screen" id="memory1">
 
-<div class="mini">Our Memories</div>
+<div class="mini">One Memory</div>
 
 <div class="memory-card">
 
@@ -776,27 +726,25 @@ MEMORY INTRO
 </div>
 
 <h2 class="memory-title">
-Ek memory...
+Jab hum mile the...
 </h2>
 
 <p class="memory-text">
 Jab hum shaadi mein mile the,
-shayad us waqt kisi ko nahi pata tha
-ki ye mulaqat itni special ho jayegi. ❤️
+shayad us waqt humein bhi nahi pata tha
+ki ye mulaqat itni special ban jayegi. ❤️
 </p>
 
 </div>
 
-<button class="btn" onclick="go('memoryIntro','memory2')">
+<button class="btn" onclick="showScreen('memory1','memory2')">
 Next Memory →
 </button>
 
 </section>
 
 
-<!-- =================================================
-MEMORY 2
-================================================= -->
+<!-- ================= MEMORY 2 ================= -->
 
 <section class="screen" id="memory2">
 
@@ -807,181 +755,172 @@ MEMORY 2
 </div>
 
 <h2 class="memory-title">
-Agar hum kahin jaaye...
+Ek jagah...
 </h2>
 
 <p class="memory-text">
-Toh mujhe kisi pahadi jagah par
-tumhare saath time spend karna
-sabse accha lagega. 🏔️❤️
+Agar kabhi hum dono ko kahin jaana ho,
+toh kisi pahadi jagah par tumhare saath
+time spend karna mujhe bahut accha lagega. ❤️
 </p>
 
 </div>
 
-<button class="btn" onclick="go('memory2','game')">
+<button class="btn" onclick="showScreen('memory2','game')">
 Ek Game Khele? 🎮
 </button>
 
 </section>
 
 
-<!-- =================================================
-CHOICE GAME
-================================================= -->
+<!-- ================= GAME ================= -->
 
 <section class="screen" id="game">
 
-<div class="mini">Mini Game</div>
+<div class="mini">Mini Date Game</div>
 
-<h1 class="choice-title">
-Agar hum dono ko<br>
-ek perfect date mile... ❤️
+<h1 class="title" style="font-size:27px;">
+Ritika, perfect date kya choose karogi? ❤️
 </h1>
 
-<div class="choice-grid">
+<div class="game-grid" style="margin-top:25px;">
 
-<button class="choice" onclick="dateChoice('Mountain')">
-🏔️ Mountain
+<button class="game-option" onclick="dateChoice('mountain')">
+🏔️ Pahad
 </button>
 
-<button class="choice" onclick="dateChoice('Night Walk')">
+<button class="game-option" onclick="dateChoice('walk')">
 🌙 Night Walk
 </button>
 
-<button class="choice" onclick="dateChoice('Food Date')">
+<button class="game-option" onclick="dateChoice('food')">
 🍚 Food Date
 </button>
 
-<button class="choice" onclick="dateChoice('Movie')">
+<button class="game-option" onclick="dateChoice('movie')">
 🎬 Movie
 </button>
 
 </div>
 
-<p class="subtitle" id="gameResult"></p>
+<div class="game-result" id="gameResult"></div>
 
-<button class="btn" id="gameNext" onclick="go('game','envelopes')" style="display:none;">
+<button
+class="btn"
+id="gameNext"
+onclick="showScreen('game','envelopes')"
+style="display:none;">
 Next ❤️
 </button>
 
 </section>
 
 
-<!-- =================================================
-OPEN WHEN
-================================================= -->
+<!-- ================= ENVELOPES ================= -->
 
 <section class="screen" id="envelopes">
 
 <div class="mini">Open When...</div>
 
 <h1 class="title" style="font-size:28px;">
-Koi ek khol ke dekho 💌
+Ritika ke liye 💌
 </h1>
 
-<div class="envelopes">
+<div class="envelopes" style="margin-top:25px;">
 
-<div class="envelope" onclick="openEnvelope(this)">
-<div class="envelope-title">
-💌 Jab meri yaad aaye
-</div>
+<div class="envelope" onclick="toggleEnvelope(this)">
+
+<div>💌 Jab meri yaad aaye</div>
 
 <div class="envelope-text">
 Toh bas itna yaad rakhna...
 door rehne ka matlab ye nahi
 ki main tumhare baare mein nahi sochta. ❤️
 </div>
+
 </div>
 
 
-<div class="envelope" onclick="openEnvelope(this)">
-<div class="envelope-title">
-🥺 Jab mujhse gussa ho
-</div>
+<div class="envelope" onclick="toggleEnvelope(this)">
+
+<div>🥺 Jab mujhse gussa ho</div>
 
 <div class="envelope-text">
-Pehle thoda gussa kar lena...
+Thoda gussa kar lena...
 phir baat kar lena.
 Main tumhe ignore karne walon mein se nahi hoon. ❤️
 </div>
+
 </div>
 
 
-<div class="envelope" onclick="openEnvelope(this)">
-<div class="envelope-title">
-🌧️ Jab udaas ho
-</div>
+<div class="envelope" onclick="toggleEnvelope(this)">
+
+<div>🌧️ Jab udaas ho</div>
 
 <div class="envelope-text">
 Tumhe har waqt strong banne ki zarurat nahi.
 Kabhi-kabhi bas kisi ke paas rehna bhi enough hota hai. 🫶
 </div>
-</div>
 
 </div>
 
-<button class="btn" onclick="go('envelopes','fake')">
+</div>
+
+<button class="btn" onclick="showScreen('envelopes','fakeEnd')">
 Last One...
 </button>
 
 </section>
 
 
-<!-- =================================================
-FAKE ENDING
-================================================= -->
+<!-- ================= FAKE END ================= -->
 
-<section class="screen" id="fake">
+<section class="screen" id="fakeEnd">
 
-<div class="big-heart">
-❤️
-</div>
+<div class="big-heart">❤️</div>
 
 <h1 class="title">
 Bas... itna hi tha.
 </h1>
 
 <p class="subtitle">
-Quiz bhi ho gaya,<br>
+Quiz ho gaya,<br>
 memories bhi dekh li...
 </p>
 
-<button class="btn" onclick="fakeReveal()">
+<button class="btn" onclick="showScreen('fakeEnd','reveal')">
 Close ❤️
 </button>
 
 </section>
 
 
-<!-- =================================================
-FAKE REVEAL
-================================================= -->
+<!-- ================= REVEAL ================= -->
 
 <section class="screen" id="reveal">
 
-<div class="mini">
-Wait...
-</div>
+<div class="mini">Wait...</div>
 
 <h1 class="title">
-Ek baat aur hai. 😏
+Ruko Ritika... 😏
 </h1>
 
 <p class="subtitle">
 Tumhe laga main itni jaldi<br>
 website khatam kar dunga?
+<br><br>
+Ek baat aur hai...
 </p>
 
-<button class="btn" onclick="go('reveal','final')">
+<button class="btn" onclick="showScreen('reveal','final')">
 Open My Heart ❤️
 </button>
 
 </section>
 
 
-<!-- =================================================
-FINAL
-================================================= -->
+<!-- ================= FINAL ================= -->
 
 <section class="screen" id="final">
 
@@ -994,22 +933,24 @@ One Last Thing
 </div>
 
 <h1 class="title">
-Tum mujhe kitna jaanti ho,
-<br>
-iska ek score ho sakta hai...
+Ritika...
 </h1>
 
-<p class="final-message">
+<p class="final-text">
 
-Lekin main tumhe<br>
+Tum mujhe kitna jaanti ho,
+iska ek score ho sakta hai...
+
+<br><br>
+
+Lekin main tumhe
 kitna chahta hoon,
-<br>
 iska koi score nahi ho sakta. ❤️
 
 <br><br>
 
-Tum meri life ki
-un chhoti-chhoti khushiyon mein se ho
+Tum meri life ki un
+chhoti-chhoti khushiyon mein se ho
 jinka mujhe kabhi-kabhi
 khud bhi ehsaas nahi hota.
 
@@ -1037,11 +978,10 @@ Aur meri har achhi dua mein bhi tum. ❤️
 <script>
 
 /* =====================================================
-18 IMAGE LINES
+18 LINES
 ===================================================== */
 
-const quotes = [
-
+var quotes = [
 "एक — भगवान",
 "दो — पक्ष",
 "तीन — लोक",
@@ -1060,10 +1000,35 @@ const quotes = [
 "सोलह — श्रृंगार",
 "सत्रह — वनस्पति",
 "अठारह — पुराण"
-
 ];
 
-let quoteIndex = 0;
+var quoteIndex = 0;
+
+
+/* =====================================================
+SCREEN CHANGE
+===================================================== */
+
+function showScreen(fromId,toId){
+
+    var from=document.getElementById(fromId);
+    var to=document.getElementById(toId);
+
+    if(!from || !to){
+        return;
+    }
+
+    from.classList.remove("active");
+
+    setTimeout(function(){
+        to.classList.add("active");
+    },120);
+}
+
+
+/* =====================================================
+18 LINES NEXT
+===================================================== */
 
 function nextQuote(){
 
@@ -1071,43 +1036,19 @@ function nextQuote(){
 
     if(quoteIndex >= quotes.length){
 
-        go("quotes","quoteEnd");
+        showScreen("quotes","quoteEnd");
 
         return;
-
     }
 
     document.getElementById("quoteNumber").innerText =
-        quotes[quoteIndex];
+        String(quoteIndex+1).padStart(2,"0")+" / 18";
 
     document.getElementById("quoteText").innerText =
         quotes[quoteIndex];
 
-}
-
-
-/* =====================================================
-SCREEN CHANGE
-===================================================== */
-
-function go(from,to){
-
-    const fromScreen =
-        document.getElementById(from);
-
-    const toScreen =
-        document.getElementById(to);
-
-    fromScreen.classList.remove("active");
-    fromScreen.classList.add("out");
-
-    setTimeout(()=>{
-
-        fromScreen.classList.remove("out");
-        toScreen.classList.add("active");
-
-    },120);
-
+    document.getElementById("quoteHint").innerText =
+        "Next baat... ❤️";
 }
 
 
@@ -1115,158 +1056,163 @@ function go(from,to){
 QUESTIONS
 ===================================================== */
 
-const questions = [
+var questions=[
 
 {
-q:"Aditya ka favourite colour kya hai?",
-a:["Black 🖤","Blue 💙","White 🤍","Green 💚"],
-correct:"Black 🖤"
+q:"Ritika, Aditya ka favourite colour kya hai?",
+options:["Black 🖤","Blue 💙","White 🤍","Green 💚"],
+answer:"Black 🖤"
 },
 
 {
 q:"Aditya ko inmein se kya khana sabse zyada pasand hai?",
-a:["Biryani 🍚","Chola 🥘","Pizza 🍕","Burger 🍔"],
-correct:"Chola 🥘"
+options:["Biryani 🍚","Chola 🥘","Pizza 🍕","Burger 🍔"],
+answer:"Chola 🥘"
 },
 
 {
 q:"Aditya ko drink mein kya pasand hai?",
-a:["Cold Coffee ☕","Juice 🧃","Water 💧","Cold Drink 🥤"],
-correct:"Water 💧"
+options:["Cold Coffee ☕","Juice 🧃","Water 💧","Cold Drink 🥤"],
+answer:"Water 💧"
 },
 
 {
-q:"Aditya ka favourite kya hai?",
-a:["Apple 🍎","Chukandar ❤️","Mango 🥭","Banana 🍌"],
-correct:"Chukandar ❤️"
+q:"Aditya ko inmein se kya pasand hai?",
+options:["Apple 🍎","Chukandar ❤️","Mango 🥭","Banana 🍌"],
+answer:"Chukandar ❤️"
 },
 
 {
 q:"Aditya ko sweets ke baare mein kya pasand hai?",
-a:[
+options:[
 "Mujhe bahut meetha pasand hai 🍰",
 "Sirf chocolate 🍫",
 "Mitha mujhe pasand nahi 😶",
 "Ice cream 🍦"
 ],
-correct:"Mitha mujhe pasand nahi 😶"
+answer:"Mitha mujhe pasand nahi 😶"
 },
 
 {
-q:"Aditya ko ghoomne ke liye kya sabse zyada pasand hai?",
-a:[
+q:"Aditya ko ghoomne ke liye kya pasand hai?",
+options:[
 "Beach 🌊",
 "Pahad 🏔️",
-"City 🌃",
+"Big City 🌃",
 "Desert 🏜️"
 ],
-correct:"Pahad 🏔️"
+answer:"Pahad 🏔️"
 },
 
 {
-q:"Aditya ka favourite season?",
-a:[
+q:"Aditya ka favourite season kaunsa hai?",
+options:[
 "Summer ☀️",
 "Rain 🌧️",
 "Winter ❄️",
 "Spring 🌸"
 ],
-correct:"Winter ❄️"
+answer:"Winter ❄️"
 },
 
 {
-q:"Free time mein Aditya ko kya pasand hai?",
-a:[
-"Sona 😴",
+q:"Free time mein Aditya ko kya karna interesting lagta hai?",
+options:[
+"Bas sona 😴",
 "New skill seekhna 🧠",
 "Shopping 🛍️",
-"Party 🥳"
+"Party karna 🥳"
 ],
-correct:"New skill seekhna 🧠"
+answer:"New skill seekhna 🧠"
 },
 
 {
-q:"Aditya ka favourite animal?",
-a:[
+q:"Aditya ka favourite animal kaunsa hai?",
+options:[
 "Dog 🐶",
 "Cat 🐱",
 "Horse 🐴",
 "Koi favourite nahi 😄"
 ],
-correct:"Koi favourite nahi 😄"
+answer:"Koi favourite nahi 😄"
 },
 
 {
-q:"Aditya ko kaunsi series pasand hai?",
-a:[
+q:"Aditya ko kaunsi series sabse zyada pasand hai?",
+options:[
 "Money Heist 💰",
 "Stranger Things 👾",
 "Game of Thrones ⚔️",
 "Breaking Bad 🧪"
 ],
-correct:"Game of Thrones ⚔️"
+answer:"Game of Thrones ⚔️"
 },
 
 {
-q:"Aditya ka favourite singer?",
-a:[
+q:"Aditya ka favourite singer kaun hai?",
+options:[
 "Arijit Singh 🎤",
 "Jagjit Singh 🎶",
 "Sonu Nigam 🎵",
 "KK 🎧"
 ],
-correct:"Jagjit Singh 🎶"
+answer:"Jagjit Singh 🎶"
 },
 
 {
-q:"Aditya ka favourite song?",
-a:[
+q:"Aditya ka favourite song kaunsa hai?",
+options:[
 "Kesariya",
 "Tum Hi Ho",
 "Are Re Meri Jaan Hai Radha",
 "Chaleya"
 ],
-correct:"Are Re Meri Jaan Hai Radha"
+answer:"Are Re Meri Jaan Hai Radha"
 },
 
 {
-q:"Aditya ko logon mein kya pasand hai?",
-a:[
+q:"Aditya ko logon mein sabse zyada kya pasand hai?",
+options:[
 "Famous hona",
 "Honest aur loyal hona ❤️",
 "Bahut paisa hona",
 "Funny hona"
 ],
-correct:"Honest aur loyal hona ❤️"
+answer:"Honest aur loyal hona ❤️"
 },
 
 {
 q:"Aditya ko kis baat par sabse zyada irritation hoti hai?",
-a:[
-"Koi uski baat na maane aur ilzaam lagaye",
+options:[
+"Koi uski baat na maane aur uspar ilzaam lagaye",
 "Koi gift na de",
 "Koi movie na dekhe",
 "Koi call na kare"
 ],
-correct:"Koi uski baat na maane aur ilzaam lagaye"
+answer:"Koi uski baat na maane aur uspar ilzaam lagaye"
 },
 
 {
 q:"Relationship mein Aditya ko sabse zyada kya chahiye?",
-a:[
+options:[
 "Expensive gifts 🎁",
 "Attention aur care ❤️",
 "Sirf long drives 🚗",
 "Social media posts 📱"
 ],
-correct:"Attention aur care ❤️"
+answer:"Attention aur care ❤️"
 }
 
 ];
 
-let currentQuestion=0;
-let score=0;
-let answered=false;
+
+/* =====================================================
+QUIZ VARIABLES
+===================================================== */
+
+var currentQuestion=0;
+var score=0;
+var answered=false;
 
 
 /* =====================================================
@@ -1278,13 +1224,47 @@ function startQuiz(){
     currentQuestion=0;
     score=0;
 
-    go("quoteEnd","quiz");
+    showScreen("quoteEnd","quiz");
 
-    setTimeout(()=>{
+    setTimeout(function(){
         loadQuestion();
-    },300);
-
+    },200);
 }
 
 
-/* =====
+/* =====================================================
+SHUFFLE
+===================================================== */
+
+function shuffle(array){
+
+    for(var i=array.length-1;i>0;i--){
+
+        var j=Math.floor(Math.random()*(i+1));
+
+        var temp=array[i];
+
+        array[i]=array[j];
+
+        array[j]=temp;
+    }
+
+    return array;
+}
+
+
+/* =====================================================
+LOAD QUESTION
+===================================================== */
+
+function loadQuestion(){
+
+    answered=false;
+
+    var q=questions[currentQuestion];
+
+    document.getElementById("questionNumber").innerText=
+        "QUESTION "+
+        String(currentQuestion
+
+               </html>
